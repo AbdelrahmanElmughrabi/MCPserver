@@ -1,7 +1,11 @@
 from mcp.server.fastmcp import FastMCP
 import sys
 import requests
-from datetime import datetime
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 mcp = FastMCP("news_server")
 
@@ -20,11 +24,15 @@ async def get_news(category: str = "general", limit: int = 5) -> str:
     try:
         # Using NewsAPI (free tier available)
         url = "https://newsapi.org/v2/top-headlines"
+        api_key = os.getenv("NEWS_API_KEY")
+        if not api_key:
+            return "Error: NEWS_API_KEY not configured. Please set NEWS_API_KEY in your .env file."
+        
         params = {
             "country": "us",
             "category": category,
             "pageSize": limit,
-            "apiKey": "YOUR_NEWS_API_KEY"  # Get from https://newsapi.org/
+            "apiKey": api_key
         }
         
         response = requests.get(url, params=params)
