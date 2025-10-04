@@ -1,0 +1,22 @@
+# Core MCP dependencies
+mcp==1.16.0
+fastmcp==2.12.4
+
+# AI Model APIs
+openai==2.1.0
+anthropic==0.69.0
+
+# Environment management
+python-dotenv==1.1.1
+
+# HTTP client (used by AI APIs)
+httpx==0.28.1
+requests==2.32.5
+
+# Data validation and parsing
+pydantic==2.11.10
+pydantic-settings==2.11.0
+
+# Utilities
+typer==0.19.2
+rich==14.1.0
